@@ -88,6 +88,12 @@
 	
 	<distributionManagement>
 	    <repository>
+	      <id>proxy</id>
+	      <name>Mithun Technologies Releases Nexus Repository</name>
+	      <url>http://52.66.237.168:8081/repository/paytm-proxy/</url>
+	    </repository>
+		
+	     <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
 	      <url>http://52.66.237.168:8081/repository/paytm-release/</url>
