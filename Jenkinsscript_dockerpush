@@ -1,0 +1,24 @@
+node(){
+def mavenhome = tool name:'maven-3.6.1' ,type:'maven'
+    stage('git src'){
+        git credentialsId: 'git', url: 'https://github.com/teejaswin/maven-web-application.git'
+    }
+    stage('maven clean package')
+    {
+        sh "${mavenhome}/bin/mvn clean package"
+    }
+    stage('build docker image')
+    {
+        sh "docker build -t tejadocker1/mvn-web-app . "
+    }
+    stage('push docker image')
+    {
+        withCredentials([string(credentialsId: 'dockerhubpassword', variable: 'dockerhubpasswd')]) 
+        {
+            sh "docker login -u tejadocker1 -p ${dockerhub password}"
+        }
+        sh "docker push tejdocker1/mvn-web-app"
+    }
+    
+
+}
